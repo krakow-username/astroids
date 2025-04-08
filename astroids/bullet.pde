@@ -1,12 +1,17 @@
-class Bullet{
+class Bullet extends GameObject{
  
-  PVector loc;
-  PVector vel;
+  //PVector loc;
+  //PVector vel;
+  int timer = 100;
   
-  Bullet(int position){
-   loc = new PVector(demo.loc.x + position, demo.loc.y);
+  Bullet(int type){
+    super(demo.gun1.x, demo.gun1.y,demo.dir.x,demo.dir.y, 1);
+    if (type == 1) loc = new PVector(demo.gun1.x, demo.gun1.y);
+    if (type == 2) loc = new PVector(demo.gun2.x, demo.gun2.y);
+   
    vel = demo.dir.copy();
    vel.setMag(10);
+   vel.add(demo.vel.copy());
   }
   
   void show(){
@@ -23,5 +28,7 @@ class Bullet{
   
   void act(){
    loc.add(vel); 
+   timer--;
+   if (timer<0)lives=0;
   }
 }

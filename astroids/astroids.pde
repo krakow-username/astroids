@@ -4,6 +4,7 @@
 import java.util.ArrayList;
 
 ArrayList<Bullet> bullets;
+ArrayList<GameObject> objects;
 
 int mode;
 final int INTRO = 0;
@@ -17,13 +18,17 @@ void setup(){
   //size(1500,1400);
   size(1000,700);
   mode = GAME;
+  objects = new ArrayList();
   demo = new ship();
+  objects.add(demo);
+  objects.add(new Astroid());
   
   bullets = new ArrayList();
  
 }
 
 void draw(){
+  println(objects.size());
   if (mode==INTRO){
     intro();
   }

@@ -1,21 +1,23 @@
 
-public class ship{
+public class ship extends GameObject{
  
-  PVector loc, vel, dir, acc;
-  int d;
+  PVector  dir, acc, gun1, gun2, gundist;
+  int d, bulletCD, bulletCDTime;
   Gif deoxys_move;
   
   public ship(){
-    loc = new PVector(width/2,height/2);
-    vel = new PVector(0,0);
+    super(width/2,height/2,0,0, 1);
     dir = new PVector(0.5,0);
     acc = new PVector(1,0);
+    gun1 = new PVector(-6,0);
+    gun2 = new PVector(6,0);
+    gundist = new PVector(0,6);
     acc.setMag(1);
     deoxys_move = new Gif("deoxys_move",".png",4,0,-5,50,55,10);
     //vel.rotate(random(0,2*PI));
     d =20;
-    act();
-    show();
+    bulletCDTime = 10;
+    bulletCD = bulletCDTime;
     
   }
   
@@ -37,7 +39,7 @@ public class ship{
   }
   
   void act(){
-    field();
+    field(d);
     move();
     shoot();
   }
@@ -51,37 +53,48 @@ public class ship{
   
   void shoot(){
     if(spacekey){
-     bullets.add(new Bullet(6)); 
-     bullets.add(new Bullet(-6)); 
+      if(bulletCD < 0){
+         //bullets.add(new Bullet(6)); 
+         //bullets.add(new Bullet(-6));
+         objects.add(new Bullet(1));
+         objects.add(new Bullet(2));
+         bulletCD = bulletCDTime;
+      }
+      bulletCD--;
     }
   }
   
   void move(){
     acc.setMag(0.1);
     loc.add(vel);
-    println(acc.mag());
+    //gundist.add(dir);
+    gun1.set(loc);
+    gun2.set(loc);
+    gun1.sub(gundist);
+    gun2.add(gundist);
+    //println(gundist);
     if( vel.mag() < 10) {
     if (upkey || wkey) vel.add(dir);
     }
-    if(leftkey || akey){dir.rotate(-radians(3)); acc.rotate(-radians(3));}
-    if(rightkey || dkey){dir.rotate(radians(3)); acc.rotate(-radians(3));}
+    if(leftkey || akey){dir.rotate(-radians(3)); acc.rotate(-radians(3)); gundist.rotate(-radians(3));}
+    if(rightkey || dkey){dir.rotate(radians(3)); acc.rotate(radians(3)); gundist.rotate(radians(3));}
     
     
     if ( vel.mag() > 2){
-      println(acc.mag());
+      //println(acc.mag());
       vel.setMag((vel.mag() - acc.mag()));} else{
         vel.setMag(2);
       }
     
   }
   
-  void field(){
-    if(loc.y < d/2) loc.y = height - d/2;
-    if(loc.y > (height - d/2)) loc.y = d/2;
-    if(loc.x < d/2) loc.x = width - d/2;
-    if(loc.x > width - d/2) loc.x = d/2;
+  //void field(){
+  //  if(loc.y < d/2) loc.y = height - d/2;
+  //  if(loc.y > (height - d/2)) loc.y = d/2;
+  //  if(loc.x < d/2) loc.x = width - d/2;
+  //  if(loc.x > width - d/2) loc.x = d/2;
     
-  }
+  //}
   
   
 }
