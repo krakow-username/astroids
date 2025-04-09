@@ -10,7 +10,7 @@ void game(){
     currentObject.act();
     currentObject.show();
     
-    if(currentObject.lives == 0){
+    if(currentObject.lives <= 0){
      objects.remove(i); 
      i--;
     } 

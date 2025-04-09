@@ -13,7 +13,7 @@ public class ship extends GameObject{
     gun2 = new PVector(6,0);
     gundist = new PVector(0,6);
     acc.setMag(1);
-    deoxys_move = new Gif("deoxys_move",".png",4,0,-5,50,55,10);
+    deoxys_move = new Gif("deoxys/deoxys_move",".png",4,0,-5,50,55,10);
     //vel.rotate(random(0,2*PI));
     d =20;
     bulletCDTime = 10;
