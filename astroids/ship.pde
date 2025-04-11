@@ -36,12 +36,25 @@ public class ship extends GameObject{
     deoxys_move.show();
     popMatrix();
     popMatrix();
+    hitbox();
   }
   
   void act(){
     field(d);
     move();
     shoot();
+  }
+  
+  void hitbox(){
+    pushMatrix();
+    translate(loc.x,loc.y);
+    rotate(dir.heading());
+    circle(26,0,10);
+    circle(-6,10,10);
+    circle(-6,-10,10);
+    popMatrix();
+    
+    
   }
   
   void drawShip(){
@@ -73,7 +86,7 @@ public class ship extends GameObject{
     gun1.sub(gundist);
     gun2.add(gundist);
     //println(gundist);
-    if( vel.mag() < 10) {
+    if( vel.mag() < 8) {
     if (upkey || wkey) vel.add(dir);
     }
     if(leftkey || akey){dir.rotate(-radians(3)); acc.rotate(-radians(3)); gundist.rotate(-radians(3));}
