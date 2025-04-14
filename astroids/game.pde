@@ -20,6 +20,11 @@ void game(){
      i--;
     } 
   }
+  
+  if (demo.lives <= 0){
+   mode++; 
+  }
+  
 }
 
 void spawning(){

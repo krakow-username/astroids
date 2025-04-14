@@ -2,11 +2,11 @@
 public class ship extends GameObject{
  
   PVector  dir, acc, gun1, gun2, gundist;
-  int d, bulletCD, bulletCDTime;
+  int d, bulletCD, bulletCDTime, invinsibleFrames;
   Gif deoxys_move;
   
   public ship(){
-    super(width/2,height/2,0,0, 1);
+    super(width/2,height/2,0,0, 10);
     dir = new PVector(0.5,0);
     acc = new PVector(1,0);
     gun1 = new PVector(-6,0);
@@ -26,6 +26,24 @@ public class ship extends GameObject{
     show();
   }
   
+  void healthBar(){
+   pushMatrix();
+   translate(loc.x,loc.y +40);
+   pushMatrix();
+   translate(-30,-4);
+   fill(#F53B3B);
+   noStroke();
+   rectMode(CORNERS);
+   rect(0,0,map(lives,0,10,0,60),8);
+   popMatrix();
+   stroke(255);
+   noFill();
+   rectMode(CENTER);
+   rect(0,0,60,8);
+   
+   popMatrix();
+  }
+  
   void show(){
     pushMatrix();
     translate(loc.x,loc.y);
@@ -36,7 +54,8 @@ public class ship extends GameObject{
     deoxys_move.show();
     popMatrix();
     popMatrix();
-    hitbox();
+    //hitbox();
+    healthBar();
   }
   
   void act(){

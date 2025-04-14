@@ -16,7 +16,8 @@ boolean wkey, skey,akey,dkey, upkey, downkey,leftkey, rightkey, spacekey;
 
 void setup(){
   //size(1500,1400);
-  size(1000,700);
+  rectMode(CENTER);
+  size(1000,700, P2D);
   mode = GAME;
   objects = new ArrayList();
   demo = new ship();
@@ -28,7 +29,7 @@ void setup(){
 }
 
 void draw(){
-  println(objects.size());
+  //println(objects.size());
   if (mode==INTRO){
     intro();
   }
