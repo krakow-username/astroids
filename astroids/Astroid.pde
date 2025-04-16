@@ -13,7 +13,7 @@ class Astroid extends GameObject {
     loc.x = loc.x * (int)random(-1, 2);
     loc.y = loc.y * (int)random(-1, 2);
     miniorS = new Gif("minior/miniorS", ".png", 3, 0, -5, d, d, 10);
-  }
+  }            
 
   Astroid(float x, float y, PVector mag, int dir, int life) {
     super(x, y, 1, 1, life, 1);

@@ -2,7 +2,7 @@ ship demo;
 
 int score, astroidCount;
 float difficultyCurve;
-final int scoreNeeded = 500;
+final int scoreNeeded = 5;
 
 void game(){
   background(0,0,0);
@@ -22,13 +22,22 @@ void game(){
   }
   
   if (demo.lives <= 0){
-   mode++; 
+   mode = GAMEOVER; 
+  }
+  
+  if (fintro < 10){
+  if (score >= scoreNeeded){
+    fintro = 1;
+    mode = BOSSINTRO;
+  }
   }
   
 }
 
 void spawning(){
+  if (fintro < 10){
   difficultyCurve = map(score, 0, scoreNeeded, 990,930) ;
+  }
   //println(astroidCount);
   if (objects.size() < 10){
   
