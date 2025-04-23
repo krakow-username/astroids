@@ -60,6 +60,7 @@ class Astroid extends GameObject {
     for (int i =0; i < objects.size(); i++) {
       GameObject currentObject = objects.get(i);
       if (currentObject instanceof Bullet) {
+        if (currentObject.type == GUN1 || currentObject.type == GUN2){
         if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
           currentObject.lives = 0;
           if (lives < 1) {
@@ -70,13 +71,14 @@ class Astroid extends GameObject {
           lives = 0;
           //println(lives);
         }
+        }
       }
     }
     if (demo.invinsibleFrames < 1) {
       if ( dist(loc.x, loc.y, demo.loc.x, demo.loc.y) < d/2 + demo.d/2) {
         demo.lives--;
         demo.invinsibleFrames = 1000;
-        println(demo.lives);
+        //println(demo.lives);
       }
     }
     if ( dist(loc.x, loc.y, demo.loc.x, demo.loc.y) < d/2 + demo.d/2) {

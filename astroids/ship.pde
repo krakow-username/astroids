@@ -62,6 +62,7 @@ public class ship extends GameObject{
     field(d);
     move();
     shoot();
+    checkForCollisions();
   }
   
   void hitbox(){
@@ -118,6 +119,24 @@ public class ship extends GameObject{
         vel.setMag(2);
       }
     
+  }
+  
+  void checkForCollisions() {
+    for (int i =0; i < objects.size(); i++) {
+      GameObject currentObject = objects.get(i);
+      if (currentObject instanceof Bullet) {
+        if (currentObject.type == JIRACHIB ){
+        if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
+          currentObject.lives = 0;
+          if (lives < 1) {
+            lives =0;
+          }
+          lives--;
+        }
+        }
+      }
+    }
+   
   }
   
   //void field(){

@@ -3,6 +3,7 @@ PImage[] intro;
 int fintro = 1;
 
  void bossintro(){
+   Boss = true;
    difficultyCurve = 930;
      imageMode(CENTER);
     image(intro[fintro], width/2, height/2);
