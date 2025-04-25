@@ -4,6 +4,11 @@ class GameObject {
   PVector loc;
   PVector vel;
   int lives, d,type;
+  
+  //rayray
+  GameObject(){
+    
+  }
 
 
   GameObject(float lx, float ly, float vx, float vy, int _lives) {

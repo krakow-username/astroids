@@ -13,7 +13,7 @@ class Astroid extends GameObject {
     loc.x = loc.x * (int)random(-1, 2);
     loc.y = loc.y * (int)random(-1, 2);
     miniorS = new Gif("minior/miniorS", ".png", 3, 0, -5, d, d, 10);
-  }            
+  }
 
   Astroid(float x, float y, PVector mag, int dir, int life) {
     super(x, y, 1, 1, life, 1);
@@ -56,21 +56,41 @@ class Astroid extends GameObject {
   }
 
   void checkForCollisions() {
+    
+    
     demo.invinsibleFrames --;
     for (int i =0; i < objects.size(); i++) {
       GameObject currentObject = objects.get(i);
+      
+      
+      
+    //  if(currentObject instanceof Astroid){
+    //     if ( currentObject != this){
+    //    if(loc.x > width || loc.x < 0 || loc.y > height || loc.y < 0){
+         
+    //    if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
+    //      lives = 0;
+    //  }
+    //    if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
+    //      vel.mult(-1);
+    //      println("hit");
+    //  }
+    //    }
+    //}
+    //  }
+      
       if (currentObject instanceof Bullet) {
-        if (currentObject.type == GUN1 || currentObject.type == GUN2){
-        if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
-          currentObject.lives = 0;
-          if (lives < 1) {
-            lives =0;
+        if (currentObject.type == GUN1 || currentObject.type == GUN2) {
+          if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
+            currentObject.lives = 0;
+            if (lives < 1) {
+              lives =0;
+            }
+            objects.add(new Astroid(loc.x, loc.y, vel.copy(), 1, lives-1));
+            objects.add(new Astroid(loc.x, loc.y, vel.copy(), -1, lives-1));
+            lives = 0;
+            //println(lives);
           }
-          objects.add(new Astroid(loc.x, loc.y, vel.copy(), 1, lives-1));
-          objects.add(new Astroid(loc.x, loc.y, vel.copy(), -1, lives-1));
-          lives = 0;
-          //println(lives);
-        }
         }
       }
     }
@@ -82,12 +102,12 @@ class Astroid extends GameObject {
       }
     }
     if ( dist(loc.x, loc.y, demo.loc.x, demo.loc.y) < d/2 + demo.d/2) {
-        if (lives < 1) {
-          lives =0;
-        }
-        objects.add(new Astroid(loc.x, loc.y, vel.copy(), 1, lives-1));
-        objects.add(new Astroid(loc.x, loc.y, vel.copy(), -1, lives-1));
-        lives = 0;
+      if (lives < 1) {
+        lives =0;
       }
+      objects.add(new Astroid(loc.x, loc.y, vel.copy(), 1, lives-1));
+      objects.add(new Astroid(loc.x, loc.y, vel.copy(), -1, lives-1));
+      lives = 0;
+    }
   }
 }

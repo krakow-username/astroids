@@ -16,6 +16,7 @@ class Bullet extends GameObject {
     timer = 80;
     }
     if (type == JIRACHIB){
+      d = 4;
       timer = 250;
     }
     if (type == GUN1) loc.set(demo.gun1.x, demo.gun1.y);
@@ -48,17 +49,17 @@ class Bullet extends GameObject {
     }
     
     if (type == JIRACHIB){
-      fill(255);
+      fill(#EBF007);
       stroke(0);
       pushMatrix();
       translate(loc.x, loc.y);
-      circle(0,0,8);
+      circle(0,0,4);
       popMatrix();
     }
   }
 
   void act() {
-    println(timer);
+    //println(timer);
     loc.add(vel);
     timer--;
     if (timer<0)lives=0;

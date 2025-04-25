@@ -19,7 +19,7 @@ PImage deoxysBar;
 Jirachi jirachi1;
 
 void setup() {
-  //size(1500,1400);
+  //size(1500,1400,P2D);
   rectMode(CENTER);
   size(1000, 700, P2D);
   mode = GAME;
@@ -30,6 +30,8 @@ void setup() {
   //objects.add(jirachi1);
   objects.add(demo);
   objects.add(new Astroid());
+  objects.add(new Astroid());
+  objects.add(new Astroid());
 
   bullets = new ArrayList();
 
@@ -39,16 +41,16 @@ void setup() {
   for (int i =1; i <95; i++) {
     if (i<10) {
       intro[i] = loadImage("rayintro/ezgif-frame-0"+"0"+i+".png");
-      //intro[i].resize(Sw, Sh);
+      intro[i].resize(0, height +20);
     } else {
       intro[i] = loadImage("rayintro/ezgif-frame-0"+i+".png");
-      //intro[i].resize(Sw, Sh);
+      intro[i].resize(0, height +20);
     }
   }
 }
 
 void draw() {
-  //println(objects.size());
+  // (objects.size());
   if (mode==INTRO) {
     intro();
   } else if (mode==GAME) {
