@@ -6,7 +6,7 @@ public class ship extends GameObject{
   Gif deoxys_move;
   
   public ship(){
-    super(width/2,height/2,0,0, 10);
+    super(width/2,height/2,0,0, 100);
     dir = new PVector(0.5,0);
     acc = new PVector(1,0);
     gun1 = new PVector(-6,0);
@@ -125,7 +125,7 @@ public class ship extends GameObject{
     for (int i =0; i < objects.size(); i++) {
       GameObject currentObject = objects.get(i);
       if (currentObject instanceof Bullet) {
-        if (currentObject.type == JIRACHIB ){
+        if (currentObject.type == JIRACHIB ||currentObject.type ==RAYRAY1 || currentObject.type ==RAYRAY2|| currentObject.type ==RAYRAY3){
         if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
           currentObject.lives = 0;
           if (lives < 1) {

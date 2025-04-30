@@ -2,7 +2,7 @@ ship demo;
 
 int score, astroidCount;
 float difficultyCurve;
-final int scoreNeeded = 50;
+final int scoreNeeded = 5;
 boolean Boss;
 int time =0;
 
@@ -15,6 +15,7 @@ void game() {
     GameObject currentObject = objects.get(i);
     currentObject.act();
     currentObject.show();
+    
     if (currentObject instanceof Astroid) astroidCount++;
 
     if (currentObject.lives <= 0) {
@@ -49,8 +50,6 @@ void game() {
 
 void rayray() {
   
-  
-  
 }
 
 void progressBar() {
@@ -76,13 +75,13 @@ void progressBar() {
 }
 
 void spawning() {
-  println(astroidCount);
+  
   time++;
   if (fintro < 10) {
     difficultyCurve = map(score, 0, scoreNeeded, 990, 930) ;
   }
   //println(astroidCount);
-  if (astroidCount < 10) {
+  if (astroidCount < 10 && !Boss) {
 
     if (random(0, 1000) > difficultyCurve) {
       objects.add(new Astroid());

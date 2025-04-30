@@ -6,8 +6,10 @@ class GameObject {
   int lives, d,type;
   
   //rayray
-  GameObject(){
-    
+  GameObject(float lx, float ly, int _lives, int _d){
+    loc = new PVector(lx,ly);
+    lives = _lives;
+    d =_d;
   }
 
 

@@ -17,8 +17,11 @@ final int GAMEOVER = 5;
 boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey, spacekey;
 PImage deoxysBar;
 Jirachi jirachi1;
+Rayquaza ray;
 
 void setup() {
+
+  
   //size(1500,1400,P2D);
   rectMode(CENTER);
   size(1000, 700, P2D);
@@ -41,12 +44,17 @@ void setup() {
   for (int i =1; i <95; i++) {
     if (i<10) {
       intro[i] = loadImage("rayintro/ezgif-frame-0"+"0"+i+".png");
-      intro[i].resize(0, height +20);
+      //intro[i].resize(0, height +20);
     } else {
       intro[i] = loadImage("rayintro/ezgif-frame-0"+i+".png");
-      intro[i].resize(0, height +20);
+      //intro[i].resize(0, height +20);
     }
   }
+  
+    //test
+    
+    mode = BOSSINTRO;
+    fintro = 90;
 }
 
 void draw() {
