@@ -4,6 +4,7 @@ final int JIRACHIB = 3;
 final int RAYRAY1 = 4;
 final int RAYRAY2 = 5;
 final int RAYRAY3 = 6;
+final int RAYRAY4 = 7;
 
 
 
@@ -29,7 +30,7 @@ class Bullet extends GameObject {
       } else {
         vel.set(ray.dirbullet.x, ray.dirbullet.y*dir);
       }
-      vel.setMag(1);
+      vel.setMag(2);
     }
   }
 
@@ -47,6 +48,14 @@ class Bullet extends GameObject {
       loc.set(ray.loc.x, ray.loc.y);
       vel.set(ray.dirRing.x, ray.dirRing.y);
       vel.setMag(8);
+    }
+    
+    if ( type == RAYRAY4){
+      d = 25;
+      timer = 1000;
+      loc.set(ray.loc.x, ray.loc.y);
+      vel.set(ray.dirQuad.x, ray.dirQuad.y);
+      vel.setMag(4);
     }
 
 
@@ -122,6 +131,15 @@ class Bullet extends GameObject {
       popMatrix();
       //println(timer);
     }
+    
+     if (type == RAYRAY4) {
+      fill(255);
+      stroke(0);
+      pushMatrix();
+      translate(loc.x, loc.y);
+      circle(0, 0, d);
+      popMatrix();
+    }
     if (type == RAYRAY3) {
       fill(0);
       stroke(#67D5FF);
@@ -157,7 +175,7 @@ class Bullet extends GameObject {
       vel.setMag(vel.mag()/1.008);
     }
 
-    if (type == RAYRAY2) {
+    if (type == RAYRAY2 || type == RAYRAY4) {
       if (loc.x > width || loc.x < 0) lives = 0;
       if (loc.y > height || loc.y <0) lives = 0;
     }

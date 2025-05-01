@@ -14,7 +14,7 @@ final int BOSSFIGHT =3;
 final int PAUSE = 4;
 final int GAMEOVER = 5;
 
-boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey, spacekey;
+boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey, spacekey, tkey;
 PImage deoxysBar;
 Jirachi jirachi1;
 Rayquaza ray;

@@ -57,6 +57,7 @@ void keyPressed() {
     if (key == 'A' || key == 'a')  akey = true;
     if (key == 'D' || key == 'd')  dkey = true;
     if (key == 'S' || key == 's') skey = true;
+    if (key == 'T' || key == 't') tkey = true;
     if (key == ' ' ) spacekey = true;
     if (keyCode  == UP) upkey = true;
     if (keyCode  == DOWN) downkey = true;
@@ -72,6 +73,7 @@ void keyReleased() {
     if (key == 'S' || key == 's')  skey = false;
     if (key == 'D' || key == 'd')  dkey = false;
     if (key == 'A' || key == 'a')  akey = false;
+    if (key == 'T' || key == 't')  tkey = false;
     if (key == ' ' ) spacekey = false;
     if (keyCode  == UP) upkey = false;
     if (keyCode  == DOWN) downkey = false;

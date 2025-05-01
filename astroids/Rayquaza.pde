@@ -1,7 +1,7 @@
 
 
 class Rayquaza extends GameObject {
-  PVector dir, dirbullet, dirRing;
+  PVector dir, dirbullet, dirRing, dirQuad;
   float spin = 0.005;
   int bulletCD;
   int beamCD;
@@ -15,6 +15,7 @@ class Rayquaza extends GameObject {
     dir = new PVector(0, -0.5);
     dirbullet = new PVector(0, -0.5);
     dirRing = new PVector(0, -0.5);
+    dirQuad = new PVector(-0.5,-0.5);
   }
 
   void show() {
@@ -30,6 +31,7 @@ class Rayquaza extends GameObject {
   void act() {
     dir.rotate(spin);
     dirbullet.rotate(spin*8);
+    dirQuad.rotate(spin*1.5);
     shoot();
   }
 
@@ -43,6 +45,8 @@ class Rayquaza extends GameObject {
       ringCD = ringCDTime;
     }
     ringCD--;
+    
+    
 
     if (beamCD < 0) {
       objects.add(new Bullet(RAYRAY2));
@@ -58,7 +62,13 @@ class Rayquaza extends GameObject {
       objects.add(new Bullet(RAYRAY1, -1, 1));
       objects.add(new Bullet(RAYRAY1, 1, 1));
       objects.add(new Bullet(RAYRAY1, -1, 0));
-
+      
+      
+      for (int i =0; i <4; i++) {
+        dirQuad.rotate((2*PI)/4*i);
+        objects.add(new Bullet(RAYRAY4));
+      }
+      
       //objects.add(new Bullet(RAYRAY1));
       bulletCD = bulletCDTime;
     }
