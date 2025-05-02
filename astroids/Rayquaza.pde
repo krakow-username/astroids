@@ -33,7 +33,40 @@ class Rayquaza extends GameObject {
     dirbullet.rotate(spin*8);
     dirQuad.rotate(spin*1.5);
     shoot();
+    checkForCollisions();
   }
+  
+  
+  
+  void checkForCollisions() {
+    println(lives);
+    
+    
+    
+    for (int i =0; i < objects.size(); i++) {
+      GameObject currentObject = objects.get(i);
+      if (currentObject instanceof Bullet) {
+        if (currentObject.type == GUN1 || currentObject.type == GUN2){
+        if (dist(loc.x, loc.y, currentObject.loc.x, currentObject.loc.y) < d/2 + currentObject.d/2) {
+          lives--;
+          currentObject.lives = 0;
+        }
+        }
+      }
+    }
+    //physical contact for ship
+    if (demo.invinsibleFrames < 1) {
+      if ( dist(loc.x, loc.y, demo.loc.x, demo.loc.y) < d/2 + demo.d/2) {
+        lives--;
+        demo.lives--;
+        demo.invinsibleFrames = 1000;
+        //println(demo.lives);
+      }
+    }
+  }
+  
+  
+  
 
   void shoot() {
 

@@ -104,7 +104,7 @@ public class ship extends GameObject {
     int j = 0;
     //println("clicked");
     PVector temloc = new PVector(0, 0);
-    while (i<100) {
+    while (i<300) {
       //println("b");
       j = 0;
       temloc.set(random(0, width), random(0, height));
@@ -173,9 +173,9 @@ public class ship extends GameObject {
     if (tkey) {
       if (teleportCD < 0) {
         if (teleport()) {
-          println("teleported");
+          //println("teleported");
         } else {
-          println("failed");
+          //println("failed");
         }
         teleportCD = teleportCDTime;
       }

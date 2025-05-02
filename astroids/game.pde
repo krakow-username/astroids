@@ -45,11 +45,29 @@ void game() {
 
   if (Boss) {
     rayray();
+    bossHealthBar();
   }
 }
 
 void rayray() {
   
+}
+
+void bossHealthBar() {
+
+  pushMatrix();
+  translate(width/2 - width*3/4/2, height*5/6 -20);
+  fill(#00FF3D, 150);
+  noStroke();
+  rectMode(CORNERS);
+  rect(0, 0, map(ray.lives, 0, 100, 0, width*3/4), 40);
+  popMatrix();
+  stroke(255);
+  noFill();
+  rectMode(CENTER);
+  rect(width/2, height*5/6, width*3/4, 40);
+
+
 }
 
 void progressBar() {
