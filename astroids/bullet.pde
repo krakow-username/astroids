@@ -173,6 +173,9 @@ class Bullet extends GameObject {
       if (loc.x > width || loc.x < 0) lives = 0;
       if (loc.y > height || loc.y <0) lives = 0;
       vel.setMag(vel.mag()/1.008);
+      if(vel.mag()<0.5){
+        timer = 0;
+      }
     }
 
     if (type == RAYRAY2 || type == RAYRAY4) {

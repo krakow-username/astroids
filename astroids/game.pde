@@ -2,7 +2,7 @@ ship demo;
 
 int score, astroidCount;
 float difficultyCurve;
-final int scoreNeeded = 5;
+final int scoreNeeded = 250;
 boolean Boss;
 int time =0;
 
@@ -25,6 +25,10 @@ void game() {
       objects.remove(i);
       i--;
     }
+    
+    //if(currentObject instanceof Rayquaza){
+    //  objects.add(objects.remove(i));
+    //}
   }
   spawning();
 
@@ -50,7 +54,9 @@ void game() {
 }
 
 void rayray() {
-  
+    ray.show();
+  ray.act();
+
 }
 
 void bossHealthBar() {

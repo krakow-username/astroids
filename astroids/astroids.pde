@@ -50,11 +50,11 @@ void setup() {
       //intro[i].resize(0, height +20);
     }
   }
-  
+  ray = new Rayquaza();
     //test
     
-    mode = BOSSINTRO;
-    fintro = 90;
+    //mode = BOSSINTRO;
+    //fintro = 90;
 }
 
 void draw() {

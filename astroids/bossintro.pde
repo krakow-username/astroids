@@ -10,8 +10,11 @@ int fintro = 1;
     image(intro[fintro], width/2, height/2);
     if (frameCount % 1 == 0) fintro++;
     if (fintro > 93) {
-      ray = new Rayquaza();
-      objects.add(ray);
+      ray.loc.x = width/2;
+      ray.loc.y = height/4;
+      ray.d = height/6;
+      
+      //objects.add(ray);
       mode = GAME;
     }
     

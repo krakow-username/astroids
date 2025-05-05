@@ -9,6 +9,7 @@ class Rayquaza extends GameObject {
   int beamCDTime = 2;
   int ringCD;
   int ringCDTime = 50;
+  Gif rays;
 
   Rayquaza() {
     super(width/2, height/4, 100, height/6);
@@ -16,16 +17,19 @@ class Rayquaza extends GameObject {
     dirbullet = new PVector(0, -0.5);
     dirRing = new PVector(0, -0.5);
     dirQuad = new PVector(-0.5,-0.5);
+    rays  = new Gif("rayrayray/ray", ".png", 2, 0, 0, d, d, 10);
   }
 
   void show() {
     pushMatrix();
     noFill();
     translate(loc.x, loc.y);
-    rotate(dir.heading());
-    circle(0, 0, d);
-    line(0, 0, d/2, 0);
+    //rotate(dir.heading());
+    //circle(0, 0, d);
+    //line(0, 0, d/2, 0);
+    rays.show();    
     popMatrix();
+
   }
 
   void act() {

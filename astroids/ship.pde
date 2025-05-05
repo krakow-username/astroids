@@ -2,11 +2,13 @@
 public class ship extends GameObject {
 
   PVector  dir, acc, gun1, gun2, gundist;
-  int d, bulletCD, bulletCDTime, invinsibleFrames, teleportCD, teleportCDTime,redTime,redTimeSet;
+  int d, bulletCD, bulletCDTime, invinsibleFrames, teleportCD, teleportCDTime,redTime,redTimeSet, maxLives;
   Gif deoxys_move;
 
   public ship() {
-    super(width/2, height/2, 0, 0, 100);
+    super(width/2, height/2, 0, 0, 10);
+    maxLives = 30;
+    lives = maxLives;
     dir = new PVector(0.5, 0);
     acc = new PVector(1, 0);
     gun1 = new PVector(-6, 0);
@@ -36,7 +38,7 @@ public class ship extends GameObject {
     fill(#F53B3B);
     noStroke();
     rectMode(CORNERS);
-    rect(0, 0, map(lives, 0, 10, 0, 60), 8);
+    rect(0, 0, map(lives, 0, maxLives, 0, 60), 8);
     popMatrix();
     stroke(255);
     noFill();
