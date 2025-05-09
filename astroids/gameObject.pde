@@ -40,6 +40,9 @@ class GameObject {
     lives = _lives;
   }
 
+
+  
+
   void act() {
   }
 

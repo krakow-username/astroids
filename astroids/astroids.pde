@@ -5,6 +5,7 @@ import java.util.ArrayList;
 
 ArrayList<Bullet> bullets;
 ArrayList<GameObject> objects;
+ArrayList<Particle> part;
 
 int mode;
 final int INTRO = 0;
@@ -15,9 +16,11 @@ final int PAUSE = 4;
 final int GAMEOVER = 5;
 
 boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey, spacekey, tkey;
-PImage deoxysBar;
+PImage deoxysBar, ast, over, lose;
 Jirachi jirachi1;
 Rayquaza ray;
+Gif introgif;
+int currentWidth;
 
 void setup() {
 
@@ -25,9 +28,10 @@ void setup() {
   //size(1500,1400,P2D);
   rectMode(CENTER);
   size(1000, 700, P2D);
-  mode = GAME;
+  mode = INTRO;
   Boss = false;
   objects = new ArrayList();
+  part = new ArrayList();
   demo = new ship();
   jirachi1 = new Jirachi();
   //objects.add(jirachi1);
@@ -35,11 +39,18 @@ void setup() {
   objects.add(new Astroid());
   objects.add(new Astroid());
   objects.add(new Astroid());
+  
+  introgif = new Gif("intro/frame_", "_delay-0.08s.gif", 32, width/2, height/2, width, height, 5);
 
   bullets = new ArrayList();
 
   deoxysBar = loadImage("bar/ae64153eb57cf7afa9b94e1ae996dedc.png");
   deoxysBar.resize(80, 80);
+  ast = loadImage("pixel-sport.png");
+  ast.resize(width/3,0);
+  over = loadImage("9397242.jpg");
+  lose = loadImage("lose.png");
+  lose.resize(width/3,0);
   intro = new PImage [95];
   for (int i =1; i <95; i++) {
     if (i<10) {
@@ -50,11 +61,13 @@ void setup() {
       //intro[i].resize(0, height +20);
     }
   }
+  currentWidth = width;
   ray = new Rayquaza();
     //test
     
-    //mode = BOSSINTRO;
-    //fintro = 90;
+    mode = BOSSINTRO;
+    fintro = 90;
+    
 }
 
 void draw() {

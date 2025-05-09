@@ -13,7 +13,7 @@ void click() {
 class Gif {
 
   String a, b;
-  PImage[] gif;
+  public PImage[] gif;
   int NumOfFrames, f, x, y, Sw, Sh, speed;
 
   Gif(String _a, String _b, int _NumOfFrames, int _x, int _y, int _Sw, int _Sh, int _speed) {
@@ -82,7 +82,7 @@ void keyReleased() {
   }
 }
 
-/*
+
 void mouseReleased() {
  if (mode==INTRO) {
  introClicks();
@@ -94,4 +94,3 @@ void mouseReleased() {
  gameoverClicks();
  }
  }
- */

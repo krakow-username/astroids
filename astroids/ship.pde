@@ -68,6 +68,7 @@ public class ship extends GameObject {
     move();
     shoot();
     checkForCollisions();
+    
   }
 
   void hitbox() {
@@ -151,7 +152,12 @@ public class ship extends GameObject {
     gun2.add(gundist);
     //println(gundist);
     if ( vel.mag() < 8) {
-      if (upkey || wkey) vel.add(dir);
+      if (upkey || wkey){
+        vel.add(dir);
+        for (int i = 0; i < (int)random(2,4); i++){
+          part.add(new Particle(loc.copy(),dir.copy())); 
+        }
+      }
     }
     if (leftkey || akey) {
       dir.rotate(-radians(3));

@@ -11,11 +11,22 @@ void game() {
   //println(score);
 
   astroidCount = 0;
+
+  for (int i = 0; i < part.size(); i++) {
+    Particle currentPart = part.get(i);
+    currentPart.act();
+    currentPart.show();
+    if( currentPart.lives <=0){
+       part.remove(i); 
+    }
+  }
+
   for ( int i = 0; i < objects.size(); i++) {
     GameObject currentObject = objects.get(i);
     currentObject.act();
     currentObject.show();
-    
+
+
     if (currentObject instanceof Astroid) astroidCount++;
 
     if (currentObject.lives <= 0) {
@@ -25,7 +36,7 @@ void game() {
       objects.remove(i);
       i--;
     }
-    
+
     //if(currentObject instanceof Rayquaza){
     //  objects.add(objects.remove(i));
     //}
@@ -54,9 +65,8 @@ void game() {
 }
 
 void rayray() {
-    ray.show();
+  ray.show();
   ray.act();
-
 }
 
 void bossHealthBar() {
@@ -72,8 +82,6 @@ void bossHealthBar() {
   noFill();
   rectMode(CENTER);
   rect(width/2, height*5/6, width*3/4, 40);
-
-
 }
 
 void progressBar() {
@@ -99,13 +107,13 @@ void progressBar() {
 }
 
 void spawning() {
-  
+
   time++;
   if (fintro < 10) {
     difficultyCurve = map(score, 0, scoreNeeded, 990, 930) ;
   }
   //println(astroidCount);
-  if (astroidCount < 10 && !Boss) {
+  if (astroidCount < 20 && !Boss) {
 
     if (random(0, 1000) > difficultyCurve) {
       objects.add(new Astroid());
