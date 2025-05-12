@@ -32,6 +32,10 @@ void game() {
     if (currentObject.lives <= 0) {
       if (currentObject instanceof Astroid) score++ ;
       if (currentObject instanceof Jirachi) score++;
+      if(currentObject instanceof Rayquaza){
+         Won = true;
+         mode= GAMEOVER;
+      }
       //println("w");
       objects.remove(i);
       i--;

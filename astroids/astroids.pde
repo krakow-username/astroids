@@ -15,7 +15,7 @@ final int BOSSFIGHT =3;
 final int PAUSE = 4;
 final int GAMEOVER = 5;
 
-boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey, spacekey, tkey;
+boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey, spacekey, tkey, Won;
 PImage deoxysBar, ast, over, lose;
 Jirachi jirachi1;
 Rayquaza ray;
@@ -30,6 +30,7 @@ void setup() {
   size(1000, 700, P2D);
   mode = INTRO;
   Boss = false;
+  Won = false;
   objects = new ArrayList();
   part = new ArrayList();
   demo = new ship();
@@ -65,8 +66,8 @@ void setup() {
   ray = new Rayquaza();
     //test
     
-    mode = BOSSINTRO;
-    fintro = 90;
+    //mode = BOSSINTRO;
+    //fintro = 90;
     
 }
 
