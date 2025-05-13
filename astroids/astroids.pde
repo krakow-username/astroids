@@ -17,6 +17,7 @@ final int GAMEOVER = 5;
 
 boolean wkey, skey, akey, dkey, upkey, downkey, leftkey, rightkey, spacekey, tkey, Won;
 PImage deoxysBar, ast, over, lose;
+PImage[] earth;
 Jirachi jirachi1;
 Rayquaza ray;
 Gif introgif;
@@ -41,7 +42,17 @@ void setup() {
   objects.add(new Astroid());
   objects.add(new Astroid());
   
-  introgif = new Gif("intro/frame_", "_delay-0.08s.gif", 32, width/2, height/2, width, height, 5);
+  introgif = new Gif("intro/frame_", "_delay-0.08s.gif", 32, width/2, height/2, width, height, 5);  
+  
+  earth = new PImage[15];
+  for(int i = 0; i < 15; i++){
+    if(i < 10){
+      println(i);
+    earth[i] = loadImage("earth/frame_0" + i + "_delay-0.14s.png");
+    } else{
+      earth[i] = loadImage("earth/frame_" + i +  "_delay-0.14s.png");
+    }
+  }
 
   bullets = new ArrayList();
 

@@ -5,9 +5,28 @@ float difficultyCurve;
 final int scoreNeeded = 250;
 boolean Boss;
 int time =0;
+int o = 0;
 
 void game() {
   background(0, 0, 0);
+
+
+
+  if(!Boss){
+  tint(255,(int)map(score, 0, scoreNeeded, 0, 160));
+  image(earth[o], width/2, height*1.2, (int)map(score, 0, scoreNeeded, 1, width/1.5), (int)map(score, 0, scoreNeeded, 1, width/1.5));
+  noTint();
+
+  if (frameCount % (int)map(score, 0, scoreNeeded, 30,10) == 0) {
+    if ( o == 14) {
+      o = 0;
+    } else {
+      o++;
+    }
+  }
+  }
+
+
   //println(score);
 
   astroidCount = 0;
@@ -16,8 +35,8 @@ void game() {
     Particle currentPart = part.get(i);
     currentPart.act();
     currentPart.show();
-    if( currentPart.lives <=0){
-       part.remove(i); 
+    if ( currentPart.lives <=0) {
+      part.remove(i);
     }
   }
 
@@ -32,9 +51,9 @@ void game() {
     if (currentObject.lives <= 0) {
       if (currentObject instanceof Astroid) score++ ;
       if (currentObject instanceof Jirachi) score++;
-      if(currentObject instanceof Rayquaza){
-         Won = true;
-         mode= GAMEOVER;
+      if (currentObject instanceof Rayquaza) {
+        Won = true;
+        mode= GAMEOVER;
       }
       //println("w");
       objects.remove(i);
